@@ -5,13 +5,19 @@ import CardRFC from "./Components/CardRFC";
 import BTLayout from "./Components/BTLayout/BTLayout.jsx";
 import DataBinding from "./DataBinding/DataBinding.jsx";
 import HandleEvent from "./HandleEvent/HandleEvent";
+import StateDemo from "./StateDemo/StateDemo";
+import StyleComponent from "./StyleComponent/StyleComponent";
+import RenderArray from "./RenderArray/RenderArray";
 
 function App() {
   return (
     <div className="App">
       {/* <BTLayout /> */}
       {/* <DataBinding /> */}
-      <HandleEvent />
+      {/* <HandleEvent /> */}
+      {/* <StateDemo /> */}
+      {/* <StyleComponent /> */}
+      <RenderArray />
     </div>
   );
 }
