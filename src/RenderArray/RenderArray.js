@@ -70,7 +70,7 @@ export default class RenderArray extends Component {
         </div>
       );
     });
-    return result
+    return result;
   };
   render() {
     return (
