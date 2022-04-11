@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class SanPham extends Component {
   render() {
     let { phone } = this.props;
-    
+
     return (
       <div className="card">
         <div className="d-flex justify-content-center">
@@ -19,6 +19,14 @@ export default class SanPham extends Component {
             }}
           >
             Xem chi tiết
+          </button>
+          <button
+            className="btn btn-danger ml-2"
+            onClick={() => {
+              this.props.themGioHang(phone);
+            }}
+          >
+            <i className="fa fa-cart-arrow-down mr-2"></i>Thêm giỏ hàng
           </button>
         </div>
       </div>

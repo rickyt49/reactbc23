@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import GioHang from "./GioHang";
 import SanPham from "./SanPham";
 
 export default class BaiTapXemChiTiet extends Component {
@@ -15,8 +16,56 @@ export default class BaiTapXemChiTiet extends Component {
       giaBan: 5700000,
       hinhAnh: "./img/vsphone.jpg",
     },
+    gioHang: [],
   };
-
+  //state đặt ở đâu thì setState sẽ đặt tại đó
+  themGioHang = (sanPhamClick) => {
+    //setState=> Thay đổi giỏ hàng
+    let sp = { ...sanPhamClick, soLuong: 1 };
+    let gioHang = this.state.gioHang;
+    let timGioHang = gioHang.find((sp) => sp.maSP === sanPhamClick.maSP);
+    if (timGioHang) {
+      timGioHang.soLuong += 1;
+    } else {
+      gioHang.push(sp);
+    }
+    this.setState({
+      gioHang: gioHang,
+    });
+    return gioHang;
+  };
+  xoaGioHang = (maSanPhamClick) => {
+    let gioHang = this.state.gioHang;
+    let timIdxSp = gioHang.findIndex((sp) => sp.maSP === maSanPhamClick);
+    if (timIdxSp !== -1) {
+      if (window.confirm("Bạn có muốn xóa sản phẩm đang chọn?")) {
+        //Hỏi người dùng trước khi thực hiện
+        gioHang.splice(timIdxSp, 1);
+      }
+    }
+    this.setState({
+      gioHang: gioHang,
+    });
+  };
+  tangGiamSoLuong = (maSanPhamClick, soLuong) => {
+    //1 => nút + , -1 => nút -
+    console.log(maSanPhamClick, soLuong);
+    let { gioHang } = this.state;
+    let spGH = gioHang.find((sp) => sp.maSP === maSanPhamClick);
+    if (spGH) {
+      spGH.soLuong += soLuong;
+      if (spGH.soLuong < 1) {
+        if (window.confirm("Bạn có muốn xóa sản phẩm này khÔng")) {
+          gioHang = gioHang.filter((sp) => sp.maSP !== maSanPhamClick);
+        }
+        //Nếu người dùng cancel => -- số lượng đó
+        spGH.soLuong -= soLuong;
+      }
+    }
+    this.setState({
+      gioHang: gioHang,
+    });
+  };
   arrPhone = [
     {
       maSP: 1,
@@ -60,7 +109,11 @@ export default class BaiTapXemChiTiet extends Component {
     return this.arrPhone.map((phone, index) => {
       return (
         <div className="col-4" key={index}>
-          <SanPham phone={phone} renderDetail={this.renderDetail} />
+          <SanPham
+            phone={phone}
+            renderDetail={this.renderDetail}
+            themGioHang={this.themGioHang}
+          />
         </div>
       );
     });
@@ -87,6 +140,13 @@ export default class BaiTapXemChiTiet extends Component {
     } = this.state.phoneDetail;
     return (
       <div className="container-fluid">
+        <h3 className="mt-3 text-center">Giỏ hàng</h3>
+        <GioHang
+          gioHang={this.state.gioHang}
+          xoaGioHang={this.xoaGioHang}
+          tangGiamSoLuong={this.tangGiamSoLuong}
+        />
+        <h3 className="mt-3 text-center">Danh sách sản phẩm</h3>
         <div className="row">{this.renderPhone()}</div>
         <div className="row">
           <div className="col-4 text-center">
