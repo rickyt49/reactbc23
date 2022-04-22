@@ -20,33 +20,68 @@ export default class HeaderHome extends Component {
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
-              <NavLink activeClassName="bg-white text-dark" activeStyle={{borderRadius:'10px'}} className="nav-link" to="/home">
+              <NavLink
+                activeClassName="bg-white text-dark"
+                activeStyle={{ borderRadius: "10px" }}
+                className="nav-link"
+                to="/home"
+              >
                 Home <span className="sr-only">(current)</span>
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="bg-white text-dark" activeStyle={{borderRadius:'10px'}} className="nav-link" to="/about">
+              <NavLink
+                activeClassName="bg-white text-dark"
+                activeStyle={{ borderRadius: "10px" }}
+                className="nav-link"
+                to="/about"
+              >
                 About
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="bg-white text-dark" activeStyle={{borderRadius:'10px'}} className="nav-link" to="/contact">
+              <NavLink
+                activeClassName="bg-white text-dark"
+                activeStyle={{ borderRadius: "10px" }}
+                className="nav-link"
+                to="/contact"
+              >
                 Contact
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="bg-white text-dark" activeStyle={{borderRadius:'10px'}} className="nav-link" to="/login">
+              <NavLink
+                activeClassName="bg-white text-dark"
+                activeStyle={{ borderRadius: "10px" }}
+                className="nav-link"
+                to="/login"
+              >
                 Login
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="bg-white text-dark" activeStyle={{borderRadius:'10px'}} className="nav-link" to="/Register">
+              <NavLink
+                activeClassName="bg-white text-dark"
+                activeStyle={{ borderRadius: "10px" }}
+                className="nav-link"
+                to="/Register"
+              >
                 Register
               </NavLink>
             </li>
-
-            <li className="nav-item dropdown">
+            <li className="nav-item">
               <NavLink
+                activeClassName="bg-white text-dark"
+                activeStyle={{ borderRadius: "10px" }}
+                className="nav-link"
+                to="/btqlnd"
+              >
+                React Form
+              </NavLink>
+            </li>
+          
+            <li className="nav-item dropdown">
+              <a
                 className="nav-link dropdown-toggle"
                 to="#"
                 id="dropdownId"
@@ -54,14 +89,11 @@ export default class HeaderHome extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Dropdown
-              </NavLink>
+                Life Cycle - Hooks
+              </a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <NavLink className="dropdown-item" to="#">
-                  Action 1
-                </NavLink>
-                <NavLink className="dropdown-item" to="#">
-                  Action 2
+                <NavLink className="dropdown-item" to="/lifecycle">
+                  Life Cycle
                 </NavLink>
               </div>
             </li>
